@@ -52,14 +52,17 @@ class CoveragePlanner:
         for drone in range(cfg.drone_num):
 
             xmin = drone * sub_width
-            xmax = xmin + sub_width
 
-            interval_num = max(
+            lane_num = max(
                 1,
                 math.ceil(sub_width / effective_lane)
             )
 
-            lane_num = interval_num + 1
+            if lane_num % 2 == 1:
+
+                lane_num += 1
+
+            interval_num = lane_num - 1
 
             spacing = sub_width / interval_num
 

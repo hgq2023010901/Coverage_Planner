@@ -10,6 +10,6 @@ camera:
 flight:
   altitude: 1.5
   speed: 1
-  waypoint_spacing: 5
+  waypoint_spacing: 91.44
 
 drone_num: 4
