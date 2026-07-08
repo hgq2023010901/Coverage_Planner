@@ -70,14 +70,22 @@ def export_csv(
     output_dir: str,
 ):
 
-    Path(output_dir).mkdir(
+    output_path = Path(output_dir)
+
+    output_path.mkdir(
         parents=True,
         exist_ok=True,
     )
 
+    for existing_file in output_path.iterdir():
+        if existing_file.is_file():
+            existing_file.unlink()
+
+    
+
     for mission in missions:
 
-        filename = Path(output_dir) / f"drone_{mission.drone_id}.csv"
+        filename = output_path / f"drone_{mission.drone_id}.csv"
 
         with open(
             filename,
@@ -119,3 +127,5 @@ def export_csv(
             ])
 
     print(f"Exported to {output_dir}")
+    print(f"Exported {len(missions)} missions.")
+    print(f"Export Filenames: {[f'drone_{mission.drone_id}.csv' for mission in missions]}")
