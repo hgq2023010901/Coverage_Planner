@@ -64,14 +64,14 @@ class CameraConfig:
 
         return width, height
 
-    def effective_lane_width(self, altitude: float):
+    def effective_lane_area(self, altitude: float):
         """
         Effective lane spacing after overlap.
         """
 
-        _, height = self.footprint(altitude)
+        width, height = self.footprint(altitude)
 
-        return height * (1.0 - self.overlap)
+        return width * (1.0 - self.overlap), height * (1.0 - self.overlap)
 
 
 # ==========================================================
@@ -114,5 +114,3 @@ class PlannerConfig:
     flight: FlightConfig
 
     drone_num: int
-
-    keep_outside: bool = False

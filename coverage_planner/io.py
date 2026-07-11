@@ -55,7 +55,6 @@ def load_config(path: str) -> PlannerConfig:
         ),
 
         drone_num=data["drone_num"],
-
     )
 
     return cfg

@@ -43,9 +43,9 @@ class CoveragePlanner:
 
         sub_width = cfg.area.width / cfg.drone_num
 
-        effective_lane = cfg.camera.effective_lane_width(
+        effective_lane = cfg.camera.effective_lane_area(
             cfg.flight.altitude
-        )
+        )[0]
 
         result = []
 
@@ -62,12 +62,10 @@ class CoveragePlanner:
 
                 lane_num += 1
 
-            interval_num = lane_num - 1
-
-            spacing = sub_width / interval_num
+            spacing = sub_width / lane_num
 
             lanes = [
-                xmin + i * spacing
+                xmin + (i + 1/2 ) * spacing
                 for i in range(lane_num)
             ]
 
@@ -85,14 +83,20 @@ class CoveragePlanner:
         lanes: List[float]
     ) -> DroneMission:
 
+        cfg = self.cfg
+
+        redundant = cfg.camera.effective_lane_area(
+            cfg.flight.altitude
+        )[1]
+
         mission = DroneMission(
             drone_id=drone_id,
             start_x=lanes[0],
             end_x=lanes[-1]
         )
 
-        top = self.cfg.area.length
-        bottom = 0.0
+        top = self.cfg.area.length - redundant/2
+        bottom = redundant/2
 
         control_points = []
 

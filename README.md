@@ -49,10 +49,11 @@ Vertical footprint:
 Height = 2H tan(VFOV / 2)
 ```
 
-The effective lane width is then computed as:
+The effective lane area is then computed as:
 
 ```
-Effective Lane Width = Footprint Height × (1 − Overlap)
+Effective Lane Width  = Footprint Width × (1 − Overlap)
+Effective Lane Height = Footprint Height × (1 − Overlap)
 ```
 
 where:
@@ -60,7 +61,6 @@ where:
 - H is the flight altitude
 - HFOV is the horizontal field of view
 - VFOV is the vertical field of view
-
 ---
 
 ## Project Structure
