@@ -76,7 +76,6 @@ Coverage_Planner/
 │   ├── models.py
 │   ├── planner.py
 │   └── visualization.py
-├── demo.py
 ├── main.py
 ├── output/
 └── README.md
@@ -124,13 +123,13 @@ Supported fields:
 
 ## Usage
 
-### Run the demo
+### Run the main
 
 ```bash
-python demo.py
+python main.py
 ```
 
-The demo loads `config/planner.yaml`, generates missions, visualizes the paths, exports CSV files under `output/`, and prints coverage statistics.
+The code loads `config/planner.yaml`, generates missions, visualizes the paths, exports CSV files under `output/`, and prints coverage statistics.
 
 ### Programmatic use
 
