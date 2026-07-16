@@ -1,0 +1,15 @@
+area:
+  width: 24
+  length: 50
+
+camera:
+  hfov: 90
+  vfov: 90
+  overlap: 0.10
+
+flight:
+  altitude: 1.5
+  speed: 1
+  waypoint_spacing: 50
+
+drone_num: 4
